@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Issue Workspace — BDRC Outline Fixer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="workspace-body">
+  <header class="topbar compact">
+    <a href="index.html" id="back-link" class="back-link">← New files</a>
+    <h1 id="work-title">Work</h1>
+    <span id="check-signal" class="check-signal check-idle" title="Issue re-check against current outline values">
+      Check: not run
+    </span>
+    <div class="header-actions">
+      <a id="bdrc-open" class="btn secondary" href="#" target="_blank" rel="noopener">
+        Open in BDRC
+      </a>
+      <button id="export-btn" type="button" class="btn primary">Export CSV</button>
+    </div>
+  </header>
+
+  <div id="workspace-error" class="error banner hidden"></div>
+  <div id="workspace-status" class="status banner hidden"></div>
+
+  <main class="workspace">
+    <aside class="panel left-panel">
+      <div class="panel-header">
+        <h2>Issues</h2>
+        <span id="issue-count" class="muted"></span>
+      </div>
+      <div id="issue-list" class="issue-list"></div>
+    </aside>
+
+    <section class="panel middle-panel">
+      <div class="panel-header">
+        <h2>BDRC</h2>
+        <span id="bdrc-hint" class="muted">If the embed is blank, use Open in BDRC</span>
+      </div>
+      <iframe
+        id="bdrc-frame"
+        class="bdrc-frame"
+        title="BDRC segment page"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+      ></iframe>
+      <div class="submit-bar">
+        <button id="prev-issue" type="button" class="btn secondary" disabled>Prev</button>
+        <button id="next-issue" type="button" class="btn secondary" disabled>Next</button>
+      </div>
+    </section>
+
+    <aside class="panel right-panel">
+      <div class="panel-header">
+        <h2>All segments</h2>
+        <span id="span-count" class="muted"></span>
+      </div>
+      <div id="span-editor" class="span-editor">
+        <p class="muted">Loading segments…</p>
+      </div>
+    </aside>
+  </main>
+
+  <script type="module" src="js/work.js"></script>
+</body>
+</html>

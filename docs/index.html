@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fix your BDRC outline</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Fix your BDRC outline</h1>
+    <p class="subtitle">
+      Upload <code>outline.csv</code> and <code>issue.json</code>, correct spans and
+      part types, then download the updated CSV. Nothing is saved on the server.
+    </p>
+  </header>
+
+  <main class="upload-page">
+    <form id="upload-form" class="upload-card" novalidate>
+      <div class="upload-field">
+        <label class="field-label" for="csv-file">outline.csv</label>
+        <div class="file-picker">
+          <input
+            id="csv-file"
+            name="csv"
+            type="file"
+            accept=".csv,text/csv"
+            required
+          />
+          <label for="csv-file" class="btn secondary file-btn">
+            <svg class="file-btn-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M10 12.5V3.5M10 3.5 6.5 7M10 3.5 13.5 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 13.5v1A2.5 2.5 0 0 0 6.5 17h7A2.5 2.5 0 0 0 16 14.5v-1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span class="file-btn-text">Choose file</span>
+          </label>
+          <span id="csv-file-name" class="file-name">No file chosen</span>
+        </div>
+        <p class="field-hint">Must include RID, part type, img start, and img end columns.</p>
+      </div>
+
+      <div class="upload-field">
+        <label class="field-label" for="issue-file">issue.json</label>
+        <div class="file-picker">
+          <input
+            id="issue-file"
+            name="issue"
+            type="file"
+            accept=".json,application/json"
+            required
+          />
+          <label for="issue-file" class="btn secondary file-btn">
+            <svg class="file-btn-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M10 12.5V3.5M10 3.5 6.5 7M10 3.5 13.5 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 13.5v1A2.5 2.5 0 0 0 6.5 17h7A2.5 2.5 0 0 0 16 14.5v-1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span class="file-btn-text">Choose file</span>
+          </label>
+          <span id="issue-file-name" class="file-name">No file chosen</span>
+        </div>
+        <p class="field-hint">Must include <code>w_id</code> and an <code>issues</code> array.</p>
+      </div>
+
+      <div id="upload-error" class="error hidden" role="alert"></div>
+
+      <button id="upload-submit" type="submit" class="btn primary">
+        Open workspace
+      </button>
+    </form>
+  </main>
+
+  <script type="module" src="js/upload.js"></script>
+</body>
+</html>
